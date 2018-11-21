@@ -23,7 +23,8 @@ User.create!(
   password: "12345678",
   password_confirmation: "12345678",
   confirmed_at: Time.zone.now,
-  woeid: 766_273
+  woeid: 766_273,
+  terms: true
 )
 
 10.times do |n|
@@ -34,7 +35,8 @@ User.create!(
     password: "12345678",
     password_confirmation: "12345678",
     confirmed_at: Time.zone.now,
-    woeid: 766_273
+    woeid: 766_273,
+    terms: true
   )
 end
 

@@ -16,6 +16,7 @@ FactoryBot.define do
     role 0
     madrilenian
     confirmed_at Time.zone.now
+    terms true
   end
 
   # This will use the User class (Admin would have been guessed)
@@ -25,6 +26,7 @@ FactoryBot.define do
     password "12435968770"
     role 1
     confirmed_at Time.zone.now
+    terms true
   end
 
   factory :non_confirmed_user, class: User do
@@ -33,6 +35,7 @@ FactoryBot.define do
     password "123456789"
     role 0
     madrilenian
+    terms true
   end
 
   trait(:madrilenian) { woeid 766_273 }

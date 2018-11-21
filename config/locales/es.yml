@@ -47,6 +47,7 @@ es:
         report_score: Rating de denuncias
         reporters: Denunciantes
         status: Estado
+        terms: Términos de uso
         username: Nombre de usuario
     models:
       aa_comment:

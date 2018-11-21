@@ -39,9 +39,12 @@
   <% end %>
 
   <div class="form-group">
+  <%= f.label :terms do %>
+    <%= f.check_box :terms %>
     <%= t('nlt.policy_agreement_html',
           tos: link_to(t('nlt.tos'), rules_path),
           privacy: link_to(t('nlt.privacy'), privacy_path)) %>
+    <% end %>
   </div>
 
   <div class="form-group">

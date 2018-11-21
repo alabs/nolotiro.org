@@ -2,7 +2,7 @@
 
 class RegistrationsController < Devise::RegistrationsController
   def create
-    if omniauth_registration? || verify_recaptcha
+    if params[:terms] || omniauth_registration? || verify_recaptcha
       super
 
       spam_control(request.remote_ip)

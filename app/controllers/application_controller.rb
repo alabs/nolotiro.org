@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
-                                      keys: %i[username email password password_confirmation remember_me])
+                                      keys: %i[username email password password_confirmation remember_me terms])
 
     devise_parameter_sanitizer.permit(:sign_in,
                                       keys: %i[username email password remember_me])

@@ -69,6 +69,7 @@ class User < ApplicationRecord
                        if: :password_required?
 
   validates :password, length: { in: 5..128 }, allow_blank: true
+  validates :terms, acceptance: true, allow_nil: false, on: :create
 
   devise :confirmable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :lockable,

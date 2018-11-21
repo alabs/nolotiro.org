@@ -10,6 +10,6 @@ class UnsuccessfulRegistrationTest < ActionDispatch::IntegrationTest
   end
 
   it "shows errors" do
-    assert_text "Ocurrieron 3 errores"
+    assert_text "Ocurrieron 4 errores"
   end
 end

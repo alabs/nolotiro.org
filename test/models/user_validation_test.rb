@@ -82,4 +82,14 @@ class UserValidationTest < ActiveSupport::TestCase
     assert_includes user2.errors[:username],
                     "es demasiado largo (63 caracteres máximo)"
   end
+
+  it "requires acceptance of new terms" do
+    user1 = build(:user, terms: true)
+    assert_equal true, user1.valid?
+
+    user2 = build(:user, terms: false)
+    assert_equal false, user2.valid?
+    assert_includes user2.errors[:terms], "debe ser aceptado"
+  end
+
 end
