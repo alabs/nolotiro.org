@@ -5,11 +5,7 @@ class EnsureUnaccentEnabled < ActiveRecord::Migration[4.2]
     reversible do |direction|
       direction.up do
         unless extension_enabled?('unaccent')
-          raise <<-MSG.squish
-            You must enable the unaccent extension. You can do so by running
-            "CREATE EXTENSION unaccent;" on the current DB as a PostgreSQL
-            super user.
-          MSG
+          execute "CREATE EXTENSION unaccent;"
         end
       end
     end

@@ -11,24 +11,19 @@ This is the next revision of nolotiro.org (v3), this time in [Ruby On Rails].
 
 ## Automatic Installation
 
-You need to install [VirtualBox] and [Vagrant]. Then from the root directory of
+You need to install [Docker] and [docker-compose]. Then from the root directory of
 the project, execute
 
 ```
-vagrant up
+docker-compose up
  ```
 
-When finished, you need to log in to the virtual machine with the command
+When finished, you can go  to log in to the virtual machine with the command
 
 ```
-vagrant ssh
-```
-
-Finally you should start the application server
-
-```
-cd /vagrant
-bin/rails s -b 0.0.0.0
+docker-compose run app rails db:create
+docker-compose run app rails db:migrate
+docker-compose run app rails max_mind:extract
 ```
 
 Now you can access the web application at this URL
@@ -39,11 +34,11 @@ http://localhost:3000
 
 ## Manual Installation
 
-Check out the script in `bin/bootstrap.sh` - that's the same that Vagrant uses.
+Check out the instructions on in `docker-compose.yml` and `Dockerfile`.
 
 ## Test setup
 
-Running `bin/rake` will run all the tests, that should always pass on a freshly
+Running `docker-compose run app rake` will run all the tests, that should always pass on a freshly
 downloaded copy a nolotiro's master.
 
 ## More information
@@ -54,13 +49,13 @@ For IP GeoLocation we use [GeoLite2] City. The database is bundled with this
 repo in compressed format. To extract the database, run
 
 ```
-bin/rake max_mind:extract
+docker-compose run app rails max_mind:extract
 ```
 
 You can also, grab the latest version of the DB from MaxMind by running
 
 ```
-bin/rake max_mind:update
+docker-compose run app rails max_mind:update
 ```
 
 For delayed tasks, we use Sidekiq, that uses Redis. For caching, we use Redis.
@@ -111,13 +106,13 @@ https://beta.nolotiro.org/api/v1/ad/153735
 * [GeoLite2] data API by MaxMind to auto detect user location.
 * Logo by Silvestre Herrera under GPL License.
 
+[Docker]: https://www.docker.com/
+[docker-compose]: https://docs.docker.com/compose/
 [Gemnasium Badge]: https://gemnasium.com/alabs/nolotiro.org.svg
 [Gemnasium URL]: https://gemnasium.com/alabs/nolotiro.org
 [GeoLite2]: https://dev.maxmind.com/geoip/geoip2/geolite2
-[jQuery]: https://jquery.com
 [Ruby on Rails]: http://rubyonrails.org
 [Travis Badge]: https://travis-ci.org/alabs/nolotiro.org.svg?branch=master
 [Travis URL]: https://travis-ci.org/alabs/nolotiro.org
-[Vagrant]: https://www.vagrantup.com/
-[Virtualbox]: https://www.virtualbox.org/
 [Yahoo Geoplanet]: https://archive.org/details/geoplanet_data_7.10.0.zip
+[jQuery]: https://jquery.com

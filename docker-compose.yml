@@ -16,7 +16,7 @@ services:
       - RAILS_ENV=development
       - SSH_AUTH_SOCK=/ssh-agent
     ports:
-      - 3000:3000
+      - 3000:9292
     links:
       - pg
     command: bundle exec puma
